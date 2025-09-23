@@ -24,7 +24,9 @@ const CanvasLoader = () => {
           marginTop: 40,
         }}
       >
-        {progress !== 0 ? `${progress.toFixed(2)}%` : "Loading..."}
+        {progress && !isNaN(progress)
+          ? `${Number(progress).toFixed(2)}%`
+          : "Loading..."}
       </p>
     </Html>
   );

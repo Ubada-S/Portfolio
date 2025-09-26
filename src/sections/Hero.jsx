@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants";
 import Target from "../components/Target";
+import ReactLogo from "../components/ReactLogo";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -42,6 +43,7 @@ const Hero = () => {
 
             <group>
               <Target position={sizes.targetPosition} />
+              <ReactLogo position={sizes.reactLogoPosition} scale={0.02} />
             </group>
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />

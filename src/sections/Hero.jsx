@@ -6,6 +6,7 @@ import CanvasLoader from "../components/CanvasLoader";
 import { Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants";
+import Target from "../components/Target";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -38,6 +39,10 @@ const Hero = () => {
               rotation={[0, -Math.PI, 0]}
               scale={sizes.deskScale}
             />
+
+            <group>
+              <Target position={sizes.targetPosition} />
+            </group>
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
           </Suspense>

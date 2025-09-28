@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Globe from "react-globe.gl";
-
 import Button from "../components/Button.jsx";
 
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
+  const globeRef = useRef();
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(" adrian@jsmastery.pro");
+    navigator.clipboard.writeText("ubadasiddiqi2006@gmail.com");
     setHasCopied(true);
 
-    setTimeout(() => {
-      setHasCopied(false);
-    }, 2000);
+    setTimeout(() => setHasCopied(false), 2000);
+  };
+
+  const flyToLocation = () => {
+    if (globeRef.current) {
+      globeRef.current.pointOfView(
+        { lat: 19.153723, lng: 73.035324, altitude: 1.5 }, // Mumbai
+        1500 // duration (ms)
+      );
+    }
   };
 
   return (
     <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
+        {/* Intro */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <img
@@ -25,7 +33,6 @@ const About = () => {
               alt="grid-1"
               className="w-full sm:h-[276px] h-fit object-contain"
             />
-
             <div>
               <p className="grid-headtext">Hi, I’m Ubada Siddiqi</p>
               <p className="grid-subtext">
@@ -37,6 +44,7 @@ const About = () => {
           </div>
         </div>
 
+        {/* Tech Stack */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <img
@@ -44,7 +52,6 @@ const About = () => {
               alt="grid-2"
               className="w-full sm:h-[276px] h-fit object-contain"
             />
-
             <div>
               <p className="grid-headtext">Tech Stack</p>
               <p className="grid-subtext">
@@ -55,14 +62,15 @@ const About = () => {
           </div>
         </div>
 
+        {/* Globe + Location */}
         <div className="col-span-1 xl:row-span-4">
-          <div className="grid-container">
-            <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
+          <div className="grid-container relative">
+            <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center relative">
               <Globe
+                ref={globeRef}
                 height={326}
                 width={326}
                 backgroundColor="rgba(0, 0, 0, 0)"
-                backgroundImageOpacity={0.5}
                 showAtmosphere
                 showGraticules
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
@@ -77,6 +85,14 @@ const About = () => {
                   },
                 ]}
               />
+
+              {/* Location Button */}
+              <button
+                onClick={flyToLocation}
+                className="absolute bottom-3 right-3 bg-white/20 backdrop-blur-md text-white px-3 py-2 rounded-lg hover:bg-white/30 transition"
+              >
+                📍
+              </button>
             </div>
             <div>
               <p className="grid-headtext">
@@ -91,6 +107,7 @@ const About = () => {
           </div>
         </div>
 
+        {/* Passion */}
         <div className="xl:col-span-2 xl:row-span-3">
           <div className="grid-container">
             <img
@@ -98,7 +115,6 @@ const About = () => {
               alt="grid-3"
               className="w-full sm:h-[266px] h-fit object-contain"
             />
-
             <div>
               <p className="grid-headtext">My Passion for Coding</p>
               <p className="grid-subtext">
@@ -110,6 +126,7 @@ const About = () => {
           </div>
         </div>
 
+        {/* Contact */}
         <div className="xl:col-span-1 xl:row-span-2">
           <div className="grid-container">
             <img
@@ -117,7 +134,6 @@ const About = () => {
               alt="grid-4"
               className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"
             />
-
             <div className="space-y-2">
               <p className="grid-subtext text-center">Contact me</p>
               <div className="copy-container" onClick={handleCopy}>

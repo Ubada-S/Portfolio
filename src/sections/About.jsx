@@ -69,9 +69,9 @@ const About = () => {
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
                 labelsData={[
                   {
-                    lat: 40,
-                    lng: -100,
-                    text: "Rjieka, Croatia",
+                    lat: 19.153723,
+                    lng: 73.035324,
+                    text: "I'm here",
                     color: "white",
                     size: 15,
                   },

@@ -16,7 +16,7 @@ const About = () => {
   const flyToLocation = () => {
     if (globeRef.current) {
       globeRef.current.pointOfView(
-        { lat: 19.153723, lng: 73.035324, altitude: 1.5 }, // Mumbai
+        { lat: 19.153723, lng: 73.035324, altitude: 0.4 }, // Mumbai
         1500 // duration (ms)
       );
     }

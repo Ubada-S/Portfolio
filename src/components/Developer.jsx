@@ -5,9 +5,9 @@ import { SkeletonUtils } from "three-stdlib";
 
 const Developer = ({ animationName = "idle", ...props }) => {
   const group = useRef();
-  const { nodes, materials } = useGLTF("/models/Human/developer.glb");
+  const { nodes, materials } = useGLTF("/models/human/Developer.glb");
 
-  const { scene } = useGLTF("/models/Human/developer.glb");
+  const { scene } = useGLTF("/models/human/Developer.glb");
   return (
     <group {...props} dispose={null} ref={group}>
       <primitive object={nodes.Hips} />

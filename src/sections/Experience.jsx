@@ -2,7 +2,6 @@ import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-import Developer from "../components/Developer.jsx";
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import { workExperiences } from "../constants/index.js";
 
@@ -22,13 +21,7 @@ const Experience = () => {
               <directionalLight position={[10, 10, 10]} intensity={1} />
               <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
 
-              <Suspense fallback={<CanvasLoader />}>
-                <Developer
-                  position-y={-3}
-                  scale={3}
-                  animationName={animationName}
-                />
-              </Suspense>
+              <Suspense fallback={<CanvasLoader />}></Suspense>
             </Canvas>
           </div>
           <div className="work-content">

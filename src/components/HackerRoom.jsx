@@ -1,8 +1,10 @@
 import { useGLTF, useTexture } from "@react-three/drei";
+import { useEffect } from "react";
 
 function HackerRoom(props) {
   const { nodes, materials } = useGLTF("/models/hacker-room.glb");
 
+  // Wrap texture loading to prevent render-time state updates
   const monitortxt = useTexture("textures/desk/monitor.png");
   const screenTxt = useTexture("textures/desk/screen.png");
 
@@ -74,6 +76,9 @@ function HackerRoom(props) {
   );
 }
 
+// Preload both model and textures
 useGLTF.preload("/models/hacker-room.glb");
+useTexture.preload("textures/desk/monitor.png");
+useTexture.preload("textures/desk/screen.png");
 
 export default HackerRoom;

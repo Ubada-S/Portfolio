@@ -9,7 +9,6 @@ import { calculateSizes } from "../constants";
 import Target from "../components/Target";
 import ThreeLogo from "../components/ThreeLogo";
 import Cube from "../components/Cube";
-import Rings from "../components/Rings";
 import HeroCamera from "../components/HeroCamera";
 import Button from "../components/Button";
 
@@ -37,21 +36,27 @@ const Hero = () => {
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera makeDefault position={[0, 0, 20]} />
             <HeroCamera isMobile={isMobile}>
-              <HackerRoom
-                // scale={0.07}
-                // position={[0, 0, 0]}
-                position={sizes.deskPosition}
-                rotation={[0, -Math.PI, 0]}
-                scale={sizes.deskScale}
-              />
+              <Suspense fallback={null}>
+                <HackerRoom
+                  scale={sizes.deskScale}
+                  position={sizes.deskPosition}
+                  rotation={[0, -Math.PI, 0]}
+                />
+              </Suspense>
             </HeroCamera>
 
             <group>
-              <Target position={sizes.targetPosition} />
-              <ThreeLogo position={sizes.reactLogoPosition} scale={0.02} />
-              {/* <Rings position={sizes.ringPosition} /> */}
-              <Cube position={sizes.cubePosition} />
+              <Suspense fallback={null}>
+                <Target position={sizes.targetPosition} />
+              </Suspense>
+              <Suspense fallback={null}>
+                <ThreeLogo position={sizes.reactLogoPosition} scale={0.02} />
+              </Suspense>
+              <Suspense fallback={null}>
+                <Cube position={sizes.cubePosition} />
+              </Suspense>
             </group>
+
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
           </Suspense>

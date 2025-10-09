@@ -4,6 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import { workExperiences } from "../constants/index.js";
+import Developer from "../components/Developer.jsx";
 
 const Experience = () => {
   const [animationName, setAnimationName] = useState("idle");
@@ -21,7 +22,13 @@ const Experience = () => {
               <directionalLight position={[10, 10, 10]} intensity={1} />
               <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
 
-              <Suspense fallback={<CanvasLoader />}></Suspense>
+              <Suspense fallback={<CanvasLoader />}>
+                <Developer
+                  position-y={-3}
+                  scale={0.032}
+                  animationName={animationName}
+                />
+              </Suspense>
             </Canvas>
           </div>
           <div className="work-content">

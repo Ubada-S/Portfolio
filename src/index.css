@@ -39,7 +39,7 @@ body {
   }
 
   .text-gray_gradient {
-    @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
+    @apply bg-gradient-to-b from-[#f8fafc] via-[#d1d5db] to-[#64748b] bg-clip-text text-transparent;
   }
 
   /* button component */
@@ -57,7 +57,7 @@ body {
 
   /* hero section */
   .hero_tag {
-    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
+    @apply text-center xl:text-5xl md:text-4xl sm:text-3xl text-3xl font-generalsans font-black !leading-normal;
   }
 
   /* about section */
@@ -149,6 +149,24 @@ body {
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
   }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 3s ease-in-out infinite alternate;
+}
+
+.deep-shadow {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.9),
+    0 12px 40px rgba(0, 0, 0, 0.8);
 }
 
 .waving-hand {

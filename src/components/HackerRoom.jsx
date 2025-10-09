@@ -1,84 +1,90 @@
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
 
 function HackerRoom(props) {
-  const { nodes, materials } = useGLTF("/models/hacker-room.glb");
-
-  // Wrap texture loading to prevent render-time state updates
-  const monitortxt = useTexture("textures/desk/monitor.png");
-  const screenTxt = useTexture("textures/desk/screen.png");
+  const { nodes, materials } = useGLTF("/models/comp-room.glb");
 
   return (
     <group {...props} dispose={null}>
-      <mesh
-        geometry={nodes.screen_screens_0.geometry}
-        material={materials.screens}
-      >
-        <meshMatcapMaterial map={screenTxt} />
-      </mesh>
-      <mesh
-        geometry={nodes.screen_glass_glass_0.geometry}
-        material={materials.glass}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_1.geometry}
-        material={materials.table_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_2.geometry}
-        material={materials.computer_mat}
-      >
-        <meshMatcapMaterial map={monitortxt} />
-      </mesh>
-      <mesh
-        geometry={nodes.table_table_mat_0_3.geometry}
-        material={materials.server_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_4.geometry}
-        material={materials.vhsPlayer_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_5.geometry}
-        material={materials.stand_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_6.geometry}
-        material={materials.mat_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_7.geometry}
-        material={materials.arm_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_8.geometry}
-        material={materials.tv_mat}
-      >
-        <meshMatcapMaterial map={monitortxt} />
-      </mesh>
-      <mesh
-        geometry={nodes.table_table_mat_0_9.geometry}
-        material={materials.cables_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_10.geometry}
-        material={materials.props_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_11.geometry}
-        material={materials.ground_mat}
-      />
-      <mesh
-        geometry={nodes.table_table_mat_0_12.geometry}
-        material={materials.key_mat}
-      />
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={0.987}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_2.geometry}
+          material={materials.Desk_1}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_3.geometry}
+          material={materials.Posters}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_4.geometry}
+          material={materials.Keyboard}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_5.geometry}
+          material={materials.speaker_2}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_6.geometry}
+          material={materials.BG_Dark}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_7.geometry}
+          material={materials.Carpet}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_8.geometry}
+          material={materials.Emission}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_9.geometry}
+          material={materials.Emission_Blue}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_10.geometry}
+          material={materials.Foam_Acoustic}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_11.geometry}
+          material={materials.Foam_Acoustic}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_12.geometry}
+          material={materials.Trim_Sheet_Wall}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_13.geometry}
+          material={materials.Monitor_Single}
+        />
+      </group>
     </group>
   );
 }
 
 // Preload both model and textures
-useGLTF.preload("/models/hacker-room.glb");
-useTexture.preload("textures/desk/monitor.png");
-useTexture.preload("textures/desk/screen.png");
+useGLTF.preload("/models/comp-room.glb");
 
 export default HackerRoom;

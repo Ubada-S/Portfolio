@@ -6,9 +6,6 @@ import CanvasLoader from "../components/CanvasLoader";
 import { Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants";
-import Target from "../components/Target";
-import ThreeLogo from "../components/ThreeLogo";
-import Cube from "../components/Cube";
 import HeroCamera from "../components/HeroCamera";
 import Button from "../components/Button";
 
@@ -22,11 +19,12 @@ const Hero = () => {
   return (
     <section className="min-h-screen w-full flex flex-col relative" id="home">
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
-        <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans">
-          Hi, I'm Ubada <span className="waving-hand"> 👋 </span>
+        <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans z-10 deep-shadow">
+          Hi, I'm Ubada <span className="waving-hand">👋</span>
         </p>
-        <p className="hero_tag text-gray_gradient">
-          Building products and brands
+
+        <p className="hero_tag text-gray_gradient z-10">
+          I hate boring websites...
         </p>
       </div>
 
@@ -38,27 +36,19 @@ const Hero = () => {
             <HeroCamera isMobile={isMobile}>
               <Suspense fallback={null}>
                 <HackerRoom
-                  scale={sizes.deskScale}
-                  position={sizes.deskPosition}
-                  rotation={[0, -Math.PI, 0]}
+                  scale={4.5}
+                  position={[2.3, -0.2, -2]}
+                  rotation={[-0.01, 219.9, 0.0]}
                 />
               </Suspense>
             </HeroCamera>
 
-            <group>
-              <Suspense fallback={null}>
-                <Target position={sizes.targetPosition} />
-              </Suspense>
-              <Suspense fallback={null}>
-                <ThreeLogo position={sizes.reactLogoPosition} scale={0.02} />
-              </Suspense>
-              <Suspense fallback={null}>
-                <Cube position={sizes.cubePosition} />
-              </Suspense>
-            </group>
-
-            <ambientLight intensity={1} />
-            <directionalLight position={[10, 10, 10]} intensity={0.5} />
+            <ambientLight intensity={1.3} />
+            <directionalLight
+              position={[10, 10, 10]}
+              intensity={3}
+              color={"#ADD8E6"}
+            />
           </Suspense>
         </Canvas>
       </div>

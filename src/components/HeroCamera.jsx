@@ -8,14 +8,14 @@ const HeroCamera = ({ children, isMobile }) => {
   useFrame(
     (state, delta) => {
       // Smooth camera movement
-      easing.damp3(state.camera.position, [0, 0, 20], 0.25, delta);
+      easing.damp3(state.camera.position, [0, 0, 20], 0.15, delta);
 
       // Rotate group with mouse when not on mobile
       // if (!isMobile && groupRef.current) {
       easing.dampE(
         groupRef.current.rotation,
         [-state.pointer.y / 3, state.pointer.x / 5, 0], // flipped signs
-        0.25,
+        0.6,
         delta
       );
     }
@@ -24,7 +24,7 @@ const HeroCamera = ({ children, isMobile }) => {
   );
 
   return (
-    <group ref={groupRef} scale={isMobile ? 1 : 1.3}>
+    <group ref={groupRef} scale={isMobile ? 1.5 : 1.3}>
       {children}
     </group>
   );
